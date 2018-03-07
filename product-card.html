@@ -1,0 +1,140 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="product-card-link.html">
+
+<!--
+`product-card`
+
+
+@demo demo/index.html
+-->
+
+<dom-module id="product-card">
+  <template>
+    <style>
+      :host {
+        display: block;
+        --card-image-size: 10vw;
+        --card-max-image-size: 6em;
+        --card-padding: 1.4em;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        -webkit-box-shadow: 0 1px 7px rgba(0, 0, 0, .15);
+        box-shadow: 0 1px 7px rgba(0, 0, 0, .15);
+        padding: var(--card-padding);
+        position: relative;
+        @apply --card-wrapper;
+      }
+
+      #title {
+        margin-top: 1em;
+        order: 2;
+      }
+
+      #title ::slotted(*) {
+        font-weight: 100;
+        font-size: 2em;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        margin: 0;
+        margin: 0;
+      }
+
+      #bgImage iron-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: var(--card-image-size);
+        max-height: var(--card-max-image-size);
+        border-bottom: 1px solid rgba(0, 0, 0, .05);
+        @apply --card-bg-iron-image;
+      }
+
+      #image {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        order: 1;
+        @apply --card-image;
+      }
+
+      #image iron-image {
+        max-width: var(--card-max-image-size);
+        max-height: var(--card-max-image-size);
+        height: var(--card-image-size);
+        width: var(--card-image-size);
+        display: flex;
+        overflow: hidden;
+        -webkit-box-shadow: 0 4px 9px rgba(0, 0, 0, .25);
+        box-shadow: 0 4px 9px rgba(0, 0, 0, .25);
+        @apply --card-iron-image;
+      }
+
+      #content {
+        display: flex;
+        flex: 1 1 auto;
+        order: 3;
+        justify-content: center;
+        font-weight: 100;
+        margin-bottom: 2em;
+        @apply --card-content;
+      }
+
+      #content ::slotted(*:first-child){
+        margin-top: 0;
+      }
+
+      #content ::slotted(*:last-child){
+        margin-bottom: 0;
+      }
+
+      #links {
+        display: flex;
+        order: 4;
+        justify-content: center;
+        @apply --card-content;
+      }
+    </style>
+    <div id="wrapper">
+      <div id="bgImage">
+        <iron-image src="[[bgImage]]" preload sizing="cover"></iron-image>
+      </div>
+      <div id="image">
+        <iron-image src="[[image]]" preload sizing="cover"></iron-image>
+      </div>
+      <div id="title"><slot name="title"></slot></div>
+      <div id="links">
+        <slot name="links"></slot>
+      </div>
+      <div id="content"><slot></slot></div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'product-card',
+
+      properties: {
+        title: {
+          type: String,
+          value: '',
+        },
+        image: {
+          type: String,
+          value: '',
+        },
+        bgImage: {
+          type: String,
+          value: '',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
