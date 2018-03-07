@@ -1,0 +1,82 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<dom-module id="product-card-link">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-button {
+        @apply --button;
+      }
+
+      paper-button:hover {
+        @apply --button-hover;
+      }
+
+      paper-button:active {
+        @apply --button-hover;
+      }
+
+      paper-button:disabled {
+        @apply --button-hover;
+      }
+
+      :host[primary] paper-button {
+        background: #1473e6;
+        color: white;
+        @apply --button-primary;
+      }
+
+      :host[primary] paper-button:hover {
+        background: orange;
+        color: white;
+        @apply --button-primary-hover;
+      }
+
+      host[primary] paper-button:active {
+        background: orange;
+        color: white;
+        @apply --button-primary-hover;
+      }
+
+      host[primary] paper-button:disabled {
+        background: orange;
+        color: white;
+        @apply --button-primary-hover;
+      }
+
+    </style>
+
+    <paper-button id="button" noink role="link" href$="[[url]]" on-tap="_tapped">[[value]]</paper-button>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'product-card-link',
+      properties: {
+        primary: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+        },
+        value: {
+          type: String,
+          value: '',
+        },
+        url: {
+          type: String,
+          value: '',
+        },
+      },
+
+      // Change the button has been tapped and the ripple effect
+      // is done
+      _tapped: function (e) {
+        window.location.assign(this.url);
+      },
+    });
+  </script>
+</dom-module>

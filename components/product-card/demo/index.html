@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>product-card demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../product-card.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic product-card demo</h3>
+      <demo-snippet>
+        <template>
+          <product-card image="https://unsplash.it/200">
+            <h3 slot="title">H5P</h3>
+            <product-card-link slot="links" primary value="test" url="test"></product-card-link>
+            <product-card-link slot="links" value="test" url="test"></product-card-link>
+            <p>H5P Does this amazing stuff</p>
+          </product-card>
+        </template>
+      </demo-snippet>
+      <h3>Basic product-card demo with background image</h3>
+      <demo-snippet>
+        <template>
+          <product-card image="https://unsplash.it/200" bg-image="https://unsplash.it/300">
+            <h3 slot="title">H5P</h3>
+            <product-card-link slot="links" primary value="test" url="test"></product-card-link>
+            <product-card-link slot="links" value="test" url="test"></product-card-link>
+            <p>H5P Does this amazing stuff</p>
+          </product-card>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
